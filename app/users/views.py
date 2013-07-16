@@ -23,6 +23,7 @@ def before_request():
     if 'user_id' in session:
         g.user = User.query.get(session['user_id'])
 
+
 @mod.route('/login/', methods=['GET', 'POST'])
 def login():
     form = LoginForm(request.form)
@@ -37,6 +38,7 @@ def login():
             return redirect(url_for('users.home'))
         flash('Wrong email or password', 'error-message')
     return render_template("users/login.html", form=form)
+
 
 @mod.route('/register/', methods=['GET', 'POST'])
 def register():
