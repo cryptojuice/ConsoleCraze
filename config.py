@@ -7,7 +7,7 @@ DEBUG = True
 ADMINS = frozenset(['grobins2@gmail.com'])
 SECRET_KEY = 'needsecretkey'
 
-#SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(_basedir, 'app.db')
+SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(_basedir, 'app.db')
 DATABASE_CONNECT_OPTIONS = {}
 
 THREADS_PER_PAGE = 8

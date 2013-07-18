@@ -1,24 +1,30 @@
-from flask import Blueprint, request, render_template, flash, g, session, redirect, url_for
+from flask import Blueprint, request, render_template, flash, g, session,\
+        redirect, url_for
+from flask.ext.login import LoginManager, current_user, login_required, \
+        logout_user
+
 from werkzeug import check_password_hash, generate_password_hash
 
 from app.database import db
 from app.users.forms import RegisterForm, LoginForm
 from app.users.models import User
 from app.users.decorators import requires_login
+from app import login_manager
 
 mod = Blueprint('users', __name__, url_prefix='/users')
 
+@login_manager.user_loader
+def load_user(userid):
+    print('load_user called')
+    return User.query.get(userid)
 
-@mod.route('/me')
-@requires_login
+@mod.route('/profile/')
+@login_required
 def home():
     return render_template("users/profile.html", user=g.user)
 
 @mod.before_request
 def before_request():
-    """
-    Pull user's profile from the database before every request are treated
-    """
     g.user = None
     if 'user_id' in session:
         g.user = User.query.get(session['user_id'])
@@ -38,6 +44,11 @@ def login():
             return redirect(url_for('users.home'))
         flash('Wrong email or password', 'error-message')
     return render_template("users/login.html", form=form)
+
+@mod.route('/logout/')
+def logout():
+    logout_user()
+    return redirect(url_for('users.login'))
 
 
 @mod.route('/register/', methods=['GET', 'POST'])

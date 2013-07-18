@@ -13,4 +13,4 @@ class RegisterForm(Form):
         Required(),
         EqualTo('password', message='Passwords must match')
         ])
-    accept_tos = BooleanField('I access the TOS')
+    accept_tos = BooleanField('I accept the TOS')

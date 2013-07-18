@@ -1,3 +1,8 @@
+"""
+Defines the users schema for database.
+Added support methods for flask.ext.login
+"""
+
 from app.users import constants as USER
 from app.database import Base
 
@@ -17,11 +22,26 @@ class User(Base):
         self.email = email
         self.password = password
 
-    def getStatus(self):
+    def get_status(self):
         return USER.STATUS[self.status]
 
-    def getRole(self):
+    def get_role(self):
         return USER.ROLE[self.role]
+
+    def is_authenticated(self):
+        return True
+
+    def is_active(self):
+        return True
+
+    def is_anonymous(self):
+        return False
+
+    def get_id():
+        try:
+            return unicode(self.id)
+        except AttributeError:
+            raise NotImplementedError('No `id` attribute - override `get_id`')
 
     def __repr__(self):
         return '<User %r>' % (self.name)
