@@ -1,5 +1,4 @@
 .DS_Store
 *.pyc
 *.swp
-config.py
-app.db
+*.db
