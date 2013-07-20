@@ -5,11 +5,12 @@ from flask.ext.login import LoginManager, current_user, login_required, \
 
 from werkzeug import check_password_hash, generate_password_hash
 
-from consolecraze.database import db
 from consolecraze.users.forms import RegisterForm, LoginForm
 from consolecraze.users.models import User
 from consolecraze.users.decorators import requires_login
 from consolecraze import login_manager
+
+from consolecraze.database import db_session
 
 mod = Blueprint('users', __name__, url_prefix='/users')
 
@@ -62,8 +63,8 @@ def register():
         user = User(name=form.name.data, email=form.email.data, \
             password=generate_password_hash(form.password.data))
 
-        db.add(user)
-        db.commit()
+        db_session.add(user)
+        db_session.commit()
 
         session['user_id'] = user.id
 
