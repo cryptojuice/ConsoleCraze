@@ -5,11 +5,11 @@ from flask.ext.login import LoginManager, current_user, login_required, \
 
 from werkzeug import check_password_hash, generate_password_hash
 
-from app.database import db
-from app.users.forms import RegisterForm, LoginForm
-from app.users.models import User
-from app.users.decorators import requires_login
-from app import login_manager
+from consolecraze.database import db
+from consolecraze.users.forms import RegisterForm, LoginForm
+from consolecraze.users.models import User
+from consolecraze.users.decorators import requires_login
+from consolecraze import login_manager
 
 mod = Blueprint('users', __name__, url_prefix='/users')
 

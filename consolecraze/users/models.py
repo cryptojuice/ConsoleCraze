@@ -3,8 +3,8 @@ Defines the users schema for database.
 Added support methods for flask.ext.login
 """
 
-from app.users import constants as USER
-from app.database import Base
+from consolecraze.users import constants as USER
+from consolecraze.database import Base
 
 from sqlalchemy import Column, Integer, String, SmallInteger
 

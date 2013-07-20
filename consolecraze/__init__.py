@@ -12,8 +12,8 @@ def not_found(error):
     return render_template('404.html'), 404
 
 # Register application blueprints
-from app.users.views import mod as usersModule
+from consolecraze.users.views import mod as usersModule
 app.register_blueprint(usersModule)
 
-from app.posts.views import mod as postsModule
+from consolecraze.posts.views import mod as postsModule
 app.register_blueprint(postsModule)
