@@ -1,8 +1,10 @@
+import os
 from flask import Flask, render_template
 from flask.ext.login import LoginManager
 
+config_obj = os.environ.get('DIAG_CONFIG_MODULE')
 app = Flask(__name__)
-app.config.from_object('config')
+app.config.from_object(config_obj)
 
 login_manager = LoginManager()
 login_manager.init_app(app)
