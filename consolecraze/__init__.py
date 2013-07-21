@@ -17,5 +17,5 @@ def not_found(error):
 from consolecraze.users.views import mod as usersModule
 app.register_blueprint(usersModule)
 
-from consolecraze.posts.views import mod as postsModule
-app.register_blueprint(postsModule)
+from consolecraze.articles.views import mod as articlesModule
+app.register_blueprint(aritclesModule)
