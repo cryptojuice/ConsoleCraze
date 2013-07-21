@@ -2,8 +2,6 @@ import json
 from flask import Blueprint, request, render_template, flash, g, session, \
         redirect, url_for, current_app, jsonify
 
-from consolecraze import articlesModule
-
 mod = Blueprint('frontend', __name__,)
 
 
@@ -16,5 +14,5 @@ def get_json_response(view_name, *args, **kwargs):
 @mod.route("/")
 def index():
     #js = get_json_response('articlesModule.articles')
-    print(dir(url_for('articlesModule.articles')))
+    print(url_for('articles.index'))
     return "Hello"
