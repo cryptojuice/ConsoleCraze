@@ -1,6 +1,8 @@
 #!~/.virtualenvs/ccenv/bin/python
+import sys
 import os
-os.environ['DIAG_CONFIG_MODULE'] = 'config.production'
+config = sys.argv[1]
+os.environ['DIAG_CONFIG_MODULE'] = 'config.{0}'.format(config)
 
 import readline
 from pprint import pprint
