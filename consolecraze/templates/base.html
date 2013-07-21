@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html>
   <head>
-  	<title>{% block title %}ConsoleCraze{% endblock %}</title>
-  	{% block css %}
+      <title>{% block title %}{% endblock %}</title>
+      <link rel="spreadsheet" type="text/css" href="{{ url_for('static',
+      filename='css/bootstrap.css') }}">
+    {% block css %}
   	{% endblock %}
   	{% block script %}
   	{% endblock %}
   </head>
   <body>
-  	<div id="header">{% block header %}{% endblock %}</div>
-  	<div id="content">{% block content %}{% endblock %}</div>
-  	<div id="footer">{% block footer %}{% endblock %}</div>
+      <div id="content">{% block content %}{% endblock %}</div>
+      <div id="footer">{% block footer %}{% endblock %}</div>
+      <script src="{{ url_for('static',filename='js/bootstrap.js') }}">
   </body>
 </html>
