@@ -8,7 +8,7 @@ from consolecraze import app
 from consolecraze.database import db_session, init_db, drop_all
 from consolecraze.users.models import User
 
-from werkzeug import generate_password_hash, check_password_hash
+from werkzeug import generate_password_hash
 
 
 class UsersTestCase(unittest.TestCase):
