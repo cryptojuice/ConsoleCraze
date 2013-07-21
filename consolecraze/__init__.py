@@ -18,4 +18,7 @@ from consolecraze.users.views import mod as usersModule
 app.register_blueprint(usersModule)
 
 from consolecraze.articles.views import mod as articlesModule
-app.register_blueprint(aritclesModule)
+app.register_blueprint(articlesModule)
+
+from consolecraze.frontend.views import mod as frontendModule
+app.register_blueprint(frontendModule)
