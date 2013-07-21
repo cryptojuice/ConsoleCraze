@@ -1,4 +1,4 @@
-import json
+import simplejson as json
 from flask import Blueprint, request, render_template, flash, g, session, \
         redirect, url_for, current_app, jsonify
 
@@ -13,6 +13,6 @@ def get_json_response(view_name, *args, **kwargs):
 
 @mod.route("/")
 def index():
-    #js = get_json_response('articlesModule.articles')
-    print(url_for('articles.index'))
-    return "Hello"
+    js = get_json_response('articles.index')
+    titles = [t['title'] for t in js['articles']]
+    return render_template('frontend/index.html')
