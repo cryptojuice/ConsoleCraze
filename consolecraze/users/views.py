@@ -16,7 +16,6 @@ mod = Blueprint('users', __name__, url_prefix='/users')
 
 @login_manager.user_loader
 def load_user(userid):
-    print('load_user called')
     return User.query.get(userid)
 
 @mod.route('/profile/')
