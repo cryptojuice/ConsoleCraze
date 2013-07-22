@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 <div class="container-fluid">
+    <legend></legend>
     <div class="row-fluid" id="main">
         {% for article in articles %}
         <div class="span4">
@@ -10,6 +11,9 @@
                     <h4><a href="{{ article.url }}">{{ article.title }}</a></h4>
                     <p> {{ article.summary }}</p>
                 </div>
+                <legend></legend>
+                <a class="btn" href="#"><i class="icon-thumbs-up"></i></a>
+                <a class="btn" href="#"><i class="icon-thumbs-down"></i></a>
             </div>
         </div>
         {% endfor %}
