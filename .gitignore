@@ -2,4 +2,4 @@
 *.pyc
 *.swp
 *.db
-config/production.py
+production.py
