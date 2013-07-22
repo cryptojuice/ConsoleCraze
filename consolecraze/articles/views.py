@@ -18,5 +18,23 @@ def index():
             "user_id": 0, 
             "upvoted_by": None,
             "downvoted_by": None
+        },
+        {
+            "title":"Dead Rising 3 started on 360, pushed the hardware to far",
+            "summary":"Dead Rising 3 first surfaced almost two years ago. So how did it end up an Xbox One title? According to Capcom Vancouver producer Mike Jones, talking to Siliconera, it was a matter of resources.",
+            "url":"http://www.destructoid.com/dead-rising-3-started-on-360-pushed-the-hardware-too-far-258452.phtml",
+            "thumbnail_url":"",
+            "user_id": 0, 
+            "upvoted_by": None,
+            "downvoted_by": None
+        },
+        {
+            "title":"Dead Rising 3 started on 360, pushed the hardware to far",
+            "summary":"Dead Rising 3 first surfaced almost two years ago. So how did it end up an Xbox One title? According to Capcom Vancouver producer Mike Jones, talking to Siliconera, it was a matter of resources.",
+            "url":"http://www.destructoid.com/dead-rising-3-started-on-360-pushed-the-hardware-too-far-258452.phtml",
+            "thumbnail_url":"",
+            "user_id": 0, 
+            "upvoted_by": None,
+            "downvoted_by": None
         }
     ])
