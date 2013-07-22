@@ -15,4 +15,4 @@ def get_json_response(view_name, *args, **kwargs):
 def index():
     js = get_json_response('articles.index')
     titles = [t['title'] for t in js['articles']]
-    return render_template('frontend/index.html')
+    return render_template('frontend/index.html', articles=js['articles'])
