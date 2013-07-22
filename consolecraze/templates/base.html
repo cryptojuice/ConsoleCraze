@@ -2,16 +2,34 @@
 <html>
   <head>
       <title>{% block title %}{% endblock %}</title>
-      <link rel="spreadsheet" type="text/css" href="{{ url_for('static',
-      filename='css/bootstrap.css') }}">
+      <link rel="stylesheet" type="text/css" href="{{ url_for('static',
+          filename='css/bootstrap.css') }}">
+      <link rel="stylesheet" type="text/css" href="{{ url_for('static',
+          filename='css/consolecraze.css') }}">
+
     {% block css %}
   	{% endblock %}
   	{% block script %}
   	{% endblock %}
   </head>
   <body>
+      <div class="navbar navbar-static-top">
+          <div class="navbar-inner">
+              <a class="brand" href="/">ConsoleCraze</a>
+              <ul class="nav">
+                  <li><a href="#">POPULAR</a></li>
+                  <li><a href="#">UPCOMING</a></li>
+              </ul>
+              <ul class="nav pull-right">
+                  <li><a href="/users/login/">Login</a></li>
+                  <li><a href="/users/register/">Sign up</a></li>
+              </ul>
+          </div>
+      </div>
       <div id="content">{% block content %}{% endblock %}</div>
       <div id="footer">{% block footer %}{% endblock %}</div>
-      <script src="{{ url_for('static',filename='js/bootstrap.js') }}">
+      <script type="text/javascript" src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+      <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.js') }}"></script>
+      <script type="text/javascript" src="{{ url_for('static', filename='js/consolecraze.js') }}"></script>
   </body>
 </html>
