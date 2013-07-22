@@ -21,8 +21,13 @@
                   <li><a href="#">UPCOMING</a></li>
               </ul>
               <ul class="nav pull-right">
+                  {% if session['user_id'] is undefined %}
                   <li><a href="/users/login/">Login</a></li>
                   <li><a href="/users/register/">Sign up</a></li>
+                  {% else %}
+                  <li><a href="/users/profile/">{{ user.name }}</a></li>
+                  <li><a href="/users/logout/">Logout</a></li>
+                  {% endif %}
               </ul>
           </div>
       </div>

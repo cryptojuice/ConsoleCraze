@@ -20,7 +20,7 @@ def load_user(userid):
 
 @mod.route('/profile/')
 @login_required
-def home():
+def profile():
     return render_template("users/profile.html", user=g.user)
 
 @mod.before_request
@@ -32,6 +32,7 @@ def before_request():
 
 @mod.route('/login/', methods=['GET', 'POST'])
 def login():
+    error = None
     form = LoginForm(request.form)
 
     if request.method == "POST" and form.validate():
@@ -41,14 +42,14 @@ def login():
 
             session['user_id'] = user.id
             flash('Welcome %s' % user.name)
-            return redirect(url_for('users.home'))
-        flash('Wrong email or password', 'error-message')
-    return render_template("users/login.html", form=form)
+            return redirect(url_for('frontend.index'))
+        error = 'Incorrect e-mail or password'
+    return render_template("users/login.html", form=form, error=error)
 
 @mod.route('/logout/')
 def logout():
     logout_user()
-    return redirect(url_for('users.login'))
+    return redirect(url_for('frontend.index'))
 
 
 @mod.route('/register/', methods=['GET', 'POST'])
