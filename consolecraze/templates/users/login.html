@@ -1,11 +1,27 @@
 {% extends "base.html" %}
 {% block content %}
-  {% from "forms/macros.html" import render_field %}
-  <form method="POST" action="." class="form">
-    {{ form.csrf_token }}
-    {{ render_field(form.email, class="input text") }}
-    {{ render_field(form.password, class="input text") }}
-    <input type="submit" value="Login" class="button green">
-  </form>
-  <a href="{{ url_for('users.register') }}">Register</a>
+    {% from "forms/macros.html" import render_field %}
+    <form method="POST" action="." class="form-horizontal">
+        <fieldset>
+            <legend>Login</legend>
+            <div class="control-group">
+                {{ form.csrf_token }}
+                {{ form.email.label(class="control-label") }}
+                <div class="controls">
+                    {{ form.email(class="input-xlarge") }}
+                </div>
+            </div>
+            <div class="control-group">
+                {{ form.password.label(class="control-label") }}
+                <div class="controls">
+                    {{ form.password(class="input-xlarge") }}
+                </div>
+            </div>
+            <div class="control-group">
+                <div class="controls">
+                    <button type="submit" value="Login" class="btn btn-primary">Login</button>
+                </div>
+            </div>
+        <fieldset>
+    </form>
 {% endblock %}
