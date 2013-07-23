@@ -2,10 +2,13 @@
 {% block content %}
 <div class="container-fluid">
     <legend></legend>
-    <div class="row-fluid" id="main">
-        {% for article in articles %}
-        <div class="span4">
-            <div class="thumbnail">
+
+        <!-- Testing -->
+        {%- for row in articles|batch(3) %}
+        <div class="row-fluid" id="main">
+            {%- for article in row %}
+            <div class="span4">
+                <div class="thumbnail">
                 <a href="{{ article.url }}"><img src="http://placehold.it/300x150/483CB4"></a>
                 <div class="caption">
                     <h4><a href="{{ article.url }}">{{ article.title }}</a></h4>
@@ -14,9 +17,11 @@
                 <legend></legend>
                 <a class="btn" href="#"><i class="icon-thumbs-up"></i></a>
                 <a class="btn" href="#"><i class="icon-thumbs-down"></i></a>
+                </div>
             </div>
+            {%- endfor %}
         </div>
-        {% endfor %}
-    </div>
+        <br />
+        {%- endfor %}
 </div>
 {% endblock %}
