@@ -1,1 +1,1 @@
-web: gunicorn consolecraze:app
+web: gunicorn -c gunicorn.py consolecraze:app
