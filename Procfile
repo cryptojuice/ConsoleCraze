@@ -1,1 +1,1 @@
-web: gunicorn -c gunicorn.py consolecraze:app
+web: gunicorn -b "0.0.0.0:$PORT" consolecraze:app
