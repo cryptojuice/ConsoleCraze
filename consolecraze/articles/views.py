@@ -76,3 +76,7 @@ def index():
 
 
     ])
+
+@mod.route("update/")
+def update():
+    return "Hello"
