@@ -9,7 +9,9 @@
             {%- for article in row %}
             <div class="span4">
                 <div class="thumbnail">
-                <a href="{{ article.url }}"><img src="http://placehold.it/300x150/483CB4"></a>
+                    <a href="{{ article.url }}"><img src="{{ article.image_url
+                        }}" class="img-rounded
+                    imgClip"></a>
                 <div class="caption">
                     <h4><a href="{{ article.url }}">{{ article.title }}</a></h4>
                     <p> {{ article.summary }}</p>
@@ -17,6 +19,7 @@
                 <legend></legend>
                 <a class="btn" href="#"><i class="icon-thumbs-up"></i></a>
                 <a class="btn" href="#"><i class="icon-thumbs-down"></i></a>
+                <span><strong>Comments:</strong> 0</span>
                 </div>
             </div>
             {%- endfor %}
