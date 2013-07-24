@@ -1,4 +1,5 @@
 ConsoleCraze
 ============
 
-<img src="onsolecraze/static/img/screenshot001.jpg"/>
+<img
+src="https://raw.github.com/grobins2/ConsoleCraze/master/consolecraze/static/img/screenshot001.jpg"/>
