@@ -11,3 +11,5 @@ from flask import *
 from consolecraze import *
 
 os.environ['PYTHONINSPECT'] = 'True'
+
+from consolecraze.database import init_db, drop_all, db_session
