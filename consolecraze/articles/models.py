@@ -1,25 +1,33 @@
+from sqlalchemy import Column, Integer, String, SmallInteger, ForeignKey
+from sqlalchemy.orm import relationship, backref
+
 from consolecraze.database import Base
 
-from sqlalchemy import Column, Integer, String, SmallInteger
-
 class Article(Base):
-    __tablename__ = "articles_article"
+
+    """Defines Article tables for database"""
+
+    __tablename__ = "articles"
     id = Column(Integer, primary_key=True)
     title = Column(String(80))
-    summary = Column(String(140))
+    content = Column(String)
     url = Column(String(200))
-    thumbnail_url = Column(String(200))
-    user_id = Column(Integer)
+    image_url = Column(String(200))
+    user_id = Column(Integer, ForeignKey('users.id'))
+    comments = relationship('Comment', backref='article') 
     upvoted_by = Column(Integer)
     downvoted_by = Column(Integer)
 
-    def __init__(self, title=None, summary=None, url=None,
-            user_id=None, thumbnail_url=None):
+    def __init__(self, title, content, url,
+            user_id, image_url=None):
+
+        # Note eventually add default image_url to import
+
         self.title = title
-        self.summary = summary
+        self.content = content
         self.url = url
         self.user_id = user_id
-        self.thumbnail_url = thumbnail_url
+        self.image_url = image_url
 
     def __repr__(self):
-        return "Article %s" % (self.title)
+        return "user_id(%s) submitted Article.title(%s)" % (self.user_id, self.title)
