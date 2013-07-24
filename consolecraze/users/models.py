@@ -3,19 +3,23 @@ Defines the users schema for database.
 Added support methods for flask.ext.login
 """
 
+from sqlalchemy import Column, Integer, String, SmallInteger
+from sqlalchemy.orm import relationship, backref
+
 from consolecraze.users import constants as USER
 from consolecraze.database import Base
 
-from sqlalchemy import Column, Integer, String, SmallInteger
 
 class User(Base):
-    __tablename__ = 'users_user'
+    __tablename__ = 'users'
     id = Column(Integer, primary_key=True)
-    name = Column(String(50), unique=True)
+    name = Column(String(50))
     email = Column(String(120), unique=True)
     password = Column(String(20))
     role = Column(SmallInteger, default=USER.USER)
     status = Column(SmallInteger, default=USER.NEW)
+    comments = relationship('Comment', order_by='Comment.id', backref='user')
+    articles = relationship('Article', order_by='Article.id', backref='user')
 
     def __init__(self, name=None, email=None, password=None):
         self.name = name
