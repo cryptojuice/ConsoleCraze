@@ -70,5 +70,5 @@ def register():
 
         flash('Thanks for registering')
 
-        return redirect(url_for('users.home'))
+        return redirect(url_for('frontend.index'))
     return render_template("users/register.html", form=form)
