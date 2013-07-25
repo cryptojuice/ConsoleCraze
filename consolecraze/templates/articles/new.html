@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="container">
+    {% from "forms/macros.html" import render_field %}
+    <form method="POST" action="/articles/new" class="form">
+        <fieldset>
+            <legend>Submit Article</legend>
+            {{ form.csrf_token }}
+            {{ render_field(form.title, class="input-xlarge") }}
+            {{ render_field(form.content, class="input-xlarge") }}
+            {{ render_field(form.url, class="input-xlarge") }}
+            {{ render_field(form.image_url, class="input-xlarge") }}
+        <button type="submit" value="new_article" class="btn btn-primary">Submit</button>
+        </fieldset>
+    </form>
+    <div>
+{% endblock %}
