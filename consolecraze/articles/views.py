@@ -1,14 +1,65 @@
 from flask import Blueprint, request, render_template, flash, g, session, \
         redirect, url_for, jsonify
+from flask.ext.login import LoginManager, current_user, login_required, \
+        logout_user
 
 from consolecraze.database import db_session
 from consolecraze.articles.models import Article
-from consolecraze.users.decorators import requires_login
+from consolecraze.articles.forms import NewArticleForm
+from consolecraze.users.models import User
 
 mod = Blueprint('articles', __name__, url_prefix='/articles')
 
+@mod.before_request
+def before_request():
+    g.user = None
+    if 'user_id' in session:
+        g.user = User.query.get(session['user_id'])
+
 @mod.route("/")
-def index():
+def all_articles():
+    articles = Article.query.all()
+    article_list = []
+    
+    for article in articles:
+        article_list.append(
+                {
+                    "title" : article.title,
+                    "content" : article.content,
+                    "url" : article.url,
+                    "image_url" : article.image_url,
+                    "user_id" : article.user_id,
+                    "upvoted_by" : article.upvoted_by,
+                    "downvoted_by" : article.downvoted_by
+                    })
+
+    return jsonify(articles=article_list)
+
+@mod.route('/new', methods=['GET', 'POST'])
+@login_required
+def new_article():
+    error = None
+    form = NewArticleForm(request.form)
+
+    if  request.method == "POST" and form.validate():
+
+        article = Article(title=form.title.data, content=form.content.data, \
+                url=form.url.data, image_url=form.image_url.data,\
+                user_id=session['user_id'])
+
+        print(Article.query.all())
+
+        db_session.add(article)
+        db_session.commit()
+
+        flash('Submitted')
+    return render_template("articles/new.html", form=form, user=g.user)
+
+
+
+
+@mod.route("/test/")
+def test():
     return jsonify(articles=[
         {
             "title":"Dead Rising 3 started on 360, pushed the hardware to far",
