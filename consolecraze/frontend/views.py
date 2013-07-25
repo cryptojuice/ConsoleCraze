@@ -19,7 +19,7 @@ def get_json_response(view_name, *args, **kwargs):
 
 @mod.route("/")
 def index():
-    js = get_json_response('articles.index')
+    js = get_json_response('articles.all_articles')
     titles = [t['title'] for t in js['articles']]
     return render_template('frontend/index.html', articles=js['articles'],
             user=g.user)
