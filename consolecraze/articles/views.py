@@ -24,6 +24,7 @@ def all_articles():
     for article in articles:
         article_list.append(
                 {
+                    "id" : article.id,
                     "title" : article.title,
                     "content" : article.content,
                     "url" : article.url,
@@ -128,6 +129,9 @@ def test():
 
     ])
 
-@mod.route("update/")
-def update():
-    return "Hello"
+@mod.route("/upvote/<int:user_id>/<int:article_id>")
+def upvote(user_id, article_id):
+    article = Article.query.filter_by(id=article_id).first()
+    article.upvoted_by = user_id
+    db_session.commit()
+    return "%d %d" % (user_id, article_id)

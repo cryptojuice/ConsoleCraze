@@ -15,11 +15,11 @@ class Article(Base):
     image_url = Column(String(200))
     user_id = Column(Integer, ForeignKey('users.id'))
     comments = relationship('Comment', backref='article') 
-    upvoted_by = Column(Integer)
-    downvoted_by = Column(Integer)
+    upvotes = Column(Integer)
+    downvotes = Column(Integer)
 
     def __init__(self, title, content, url,
-            user_id, image_url=None):
+            user_id, image_url=None, upvotes=0, downvotes=0):
 
         # Note eventually add default image_url to import
 
@@ -28,6 +28,8 @@ class Article(Base):
         self.url = url
         self.user_id = user_id
         self.image_url = image_url
+        self.upvotes = upvotes
+        self.downvotes = downvotes
 
     def __repr__(self):
         return "user_id(%s) submitted Article.title(%s)" % (self.user_id, self.title)

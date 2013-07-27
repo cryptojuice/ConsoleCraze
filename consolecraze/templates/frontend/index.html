@@ -17,8 +17,8 @@
                     <p> {{ article.content }}</p>
                 </div>
                 <legend></legend>
-                <a class="btn" href="#"><i class="icon-thumbs-up"></i></a>
-                <a class="btn" href="#"><i class="icon-thumbs-down"></i></a>
+                <a class="btn" href="articles/upvote/{{session['user_id']}}/{{article.id}}"><i class="icon-thumbs-up"></i></a>
+                <a class="btn" href="articles/downvote/{{session['user_id']}}/{{article.id}}"><i class="icon-thumbs-down"></i></a>
                 <span><strong>Comments:</strong> 0</span>
                 </div>
             </div>
